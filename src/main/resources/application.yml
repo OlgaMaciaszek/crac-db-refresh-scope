@@ -1,16 +1,14 @@
 spring:
+  cloud:
+    refresh:
+      never-refreshable:
   application:
     name: context-demo
   config:
     import: file:./dev.yml
   datasource:
-    tomcat:
-      initial-size: 15
-      max-wait: 20000
-      max-active: 50
-      max-idle: 15
-      min-idle: 8
-      default-auto-commit: true
+      hikari:
+        allow-pool-suspension: true
   jpa:
     hibernate:
       ddl-auto: create

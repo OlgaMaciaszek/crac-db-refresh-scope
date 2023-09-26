@@ -21,7 +21,6 @@ public class DataSourceConfig {
 	@Bean
 	@RefreshScope
 	public DataSource dataSource() {
-		// TODO: XADataSource?
 		DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
 		dataSourceBuilder.driverClassName("org.postgresql.Driver");
 		dataSourceBuilder.url("jdbc:postgresql://localhost:5432/database");
