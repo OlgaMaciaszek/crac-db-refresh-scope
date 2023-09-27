@@ -6,9 +6,6 @@ spring:
     name: context-demo
   config:
     import: file:./dev.yml
-  datasource:
-      hikari:
-        allow-pool-suspension: true
   jpa:
     hibernate:
       ddl-auto: create
