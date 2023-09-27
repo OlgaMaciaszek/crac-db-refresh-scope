@@ -1,9 +1,0 @@
-2023-09-27T21:40:20.385+02:00  INFO 30330 --- [context-demo] [Attach Listener] o.s.c.support.DefaultLifecycleProcessor  : Restarting Spring-managed lifecycle beans after JVM restore
-2023-09-27T21:40:20.387+02:00  INFO 30330 --- [context-demo] [Attach Listener] o.s.c.c.refresh.RefreshScopeLifecycle    : Refreshing context on restart.
-2023-09-27T21:40:20.720+02:00  INFO 30330 --- [context-demo] [Attach Listener] o.s.c.c.refresh.RefreshScopeLifecycle    : Refreshed keys: [password]
-2023-09-27T21:40:20.722+02:00  INFO 30330 --- [context-demo] [Attach Listener] o.s.b.web.embedded.netty.NettyWebServer  : Netty started on port 8080
-2023-09-27T21:40:20.739+02:00  INFO 30330 --- [context-demo] [Attach Listener] o.s.c.support.DefaultLifecycleProcessor  : Spring-managed lifecycle restart completed in 354 ms
-2023-09-27T21:40:29.015+02:00  INFO 30330 --- [context-demo] [         task-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
-2023-09-27T21:40:29.022+02:00  INFO 30330 --- [context-demo] [         task-9] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection org.postgresql.jdbc.PgConnection@59027914
-2023-09-27T21:40:29.022+02:00  INFO 30330 --- [context-demo] [         task-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
-Hibernate: select u1_0.id,u1_0.email,u1_0.name from users u1_0
