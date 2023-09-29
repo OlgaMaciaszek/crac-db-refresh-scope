@@ -6,6 +6,7 @@ import com.zaxxer.hikari.HikariDataSource;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.boot.jdbc.HikariCheckpointRestoreLifecycle;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,5 +33,10 @@ public class DataSourceConfig {
 		HikariDataSource dataSource = dataSourceBuilder.build();
 		dataSource.setAllowPoolSuspension(true);
 		return dataSource;
+	}
+
+	@Bean
+	public HikariCheckpointRestoreLifecycle checkpointRestoreLifecycle(DataSource dataSource){
+		return new HikariCheckpointRestoreLifecycle(dataSource);
 	}
 }
