@@ -1,7 +1,7 @@
-package com.example.cracdbsample;
+package com.example.cracdbrefreshscope;
 
-import com.example.cracdbsample.entities.User;
-import com.example.cracdbsample.repositories.UserRepository;
+import com.example.cracdbrefreshscope.entities.User;
+import com.example.cracdbrefreshscope.repositories.UserRepository;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

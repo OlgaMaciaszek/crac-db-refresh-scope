@@ -1,4 +1,4 @@
-package com.example.cracdbsample;
+package com.example.cracdbrefreshscope;
 
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package com.example.cracdbsample.config;
+package com.example.cracdbrefreshscope.config;
 
 import javax.sql.DataSource;
 
@@ -11,9 +11,6 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-/**
- * @author Olga Maciaszek-Sharma
- */
 @Configuration
 @RefreshScope
 public class DataSourceConfig {
@@ -35,6 +32,9 @@ public class DataSourceConfig {
 		return dataSource;
 	}
 
+	// Instantiating HikariCheckpointRestoreLifecycle for user-provided DataSource beans
+	// will no longer be necessary after https://github.com/spring-projects/spring-boot/pull/37630
+	// has been merged
 	@Bean
 	public HikariCheckpointRestoreLifecycle checkpointRestoreLifecycle(DataSource dataSource){
 		return new HikariCheckpointRestoreLifecycle(dataSource);

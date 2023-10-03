@@ -1,12 +1,9 @@
-package com.example.cracdbsample.repositories;
+package com.example.cracdbrefreshscope.repositories;
 
-import com.example.cracdbsample.entities.User;
+import com.example.cracdbrefreshscope.entities.User;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-/**
- * @author Olga Maciaszek-Sharma
- */
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> { }
