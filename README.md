@@ -3,11 +3,11 @@
 
 ## Introduction
 
-In this sample, we've added a user-created `DataSource` bean which uses a password from external configuration source defined using `spring.config.import` property. Frequently, users point this to a  [Spring Cloud Config Server](https://docs.spring.io/spring-cloud-config/reference/4.1/server.html), but in this example we're just using a file (`dev.yml`).
-
-Thanks to adding the `@RefreshScope` annotation on the `@Configuration` class and the `@Bean` definition, if the data in the external configuration source changes between creating checkpoint and restoring the image, `RefreshScopeLifecycle` will be triggered under the hood and the `DataSource` bean will be recreated with new values (in the case of this sample, new `password` value). You can read more about Refresh Scope on restart [here](https://docs.spring.io/spring-cloud-commons/reference/4.1/spring-cloud-commons/application-context-services.html#_refresh_scope_on_restart).
+In this sample, we've added `org.springframework.cloud:spring-cloud-starter` to the pom to provide the Context Refresh functionality. In the properties we've pointed to an external configuration source for defined using `spring.config.import` property. Frequently, users point this to a  [Spring Cloud Config Server](https://docs.spring.io/spring-cloud-config/reference/4.1/server.html), but in this example we're just using a file (`dev.yml`). We have placed all the configuration for `DataSource` and `HikariDataSource` beans there, and we have listed both beans under `spring.cloud.refresh.extra-refreshables` in the property file. Thanks to this, both beans (that come from `spring-boot-starter-data-jpa`) will have the `refresh` scope, even though they have not been annotated with `@RefreshScope`. Consequently, if the data in the external configuration source changes between creating checkpoint and restoring the image, `RefreshScopeLifecycle` will be triggered under the hood and the `DataSource` bean will be recreated with new values (in the case of this sample, new `password` value). You can read more about Refresh Scope on restart [here](https://docs.spring.io/spring-cloud-commons/reference/4.1/spring-cloud-commons/application-context-services.html#_refresh_scope_on_restart).
 
 On the running application, you can also update the values of the config source as required and trigger [refreshing the context again with Actuator](https://docs.spring.io/spring-cloud-commons/reference/4.1/spring-cloud-commons/application-context-services.html#refresh-scope).
+
+TIP: If you would like to see a setup with a user-crated datasource bean, check out the `user-created-hikari-datasource` branch.
 
 ## Prerequisites
 
@@ -19,7 +19,7 @@ On the running application, you can also update the values of the config source 
 
 1. `docker compose up` to run Postgres.
 2. `./mvnw clean install` to build a jar.
-3. `java -XX:CRaCCheckpointTo=/tmp/cr -jar  target/crac-db-refresh-scope-0.0.1-SNAPSHOT.jar` to run the jar in training mode.
+3. `java -XX:CRaCCheckpointTo=/tmp/cr -jar target/crac-db-refresh-scope-0.0.1-SNAPSHOT.jar` to run the jar in training mode.
 4. Run some HTTP requests that retrieve data from Postgres:  `http GET :8080/users`.
 5. Create checkpoint and shut down: `jcmd target/crac-db-refresh-scope-0.0.1-SNAPSHOT.jar JDK.checkpoint`.
 6. In the meantime, change database password:
